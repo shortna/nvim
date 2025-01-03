@@ -57,6 +57,12 @@ lspconfig.clangd.setup({
   capabilities = capabilities,
 })
 
+lspconfig.hls.setup({
+  filetypes = { 'haskell', 'lhaskell', 'cabal' },
+  cmd = { "haskell-language-server-wrapper", "--lsp" },
+  capabilities = capabilities,
+})
+
 lspconfig.lua_ls.setup({
   cmd = { "lua-language-server" },
   on_init = function(client)
