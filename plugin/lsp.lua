@@ -51,39 +51,14 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
--- lspconfig.zls.setup({
---   cmd = { '/usr/local/bin/zls/zls' },
---   capabilities = capabilities,
--- })
--- 
--- lspconfig.jdtls.setup({
---   cmd = { '/usr/local/bin/jdtls/bin/jdtls' },
---   root_dir = vim.fs.dirname(vim.fs.find({ 'gradlew', '.git', '.mvn' }, { upward = true })[1]),
--- })
-
--- lspconfig.csharp_ls.setup({
---   cmd = { "csharp-ls" },
---   filetypes = { "cs" },
---   capabilities = capabilities,
--- })
-
-lspconfig.hls.setup({
-  filetypes = { 'haskell', 'lhaskell', 'cabal' },
-  cmd = { "haskell-language-server-wrapper", "--lsp" },
-  capabilities = capabilities,
-})
-
 lspconfig.clangd.setup({
-  cmd = {
-    "/usr/local/bin/clangd_18.1.3/bin/clangd",
-    "--enable-config",
-  },
+  cmd = { "clangd", },
   filetypes = { "c", "cpp" },
   capabilities = capabilities,
 })
 
 lspconfig.lua_ls.setup({
-  cmd = { "/usr/local/bin/lua-lsp/bin/lua-language-server" },
+  cmd = { "lua-language-server" },
   on_init = function(client)
     if client.workspace_folders then
       local path = client.workspace_folders[1].name
