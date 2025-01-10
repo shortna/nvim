@@ -21,6 +21,10 @@ Plug("nvim-lua/plenary.nvim")
 Plug("nvim-telescope/telescope.nvim")
 -- Git
 Plug("tpope/vim-fugitive")
+-- Undo tree
+Plug("mbbill/undotree")
+-- center
+Plug("smithbm2316/centerpad.nvim")
 
 vim.call("plug#end")
 
@@ -47,7 +51,6 @@ opt.wrapscan = false
 
 -- fold stuff
 vim.wo.foldmethod = 'manual'
-opt.foldenable = false
 
 -- indent stuff
 opt.expandtab = true
@@ -87,7 +90,7 @@ vim.keymap.set('t', '<S-Tab>', '<C-\\><C-n>', { nowait = true })
 
 local builtin = require('telescope.builtin')
 local function man_pages()
-  return builtin.man_pages({sections = {"2", "3"} });
+  return builtin.man_pages({ sections = { "2", "3" } });
 end
 
 vim.keymap.set('n', '<leader>gs', builtin.grep_string, { desc = 'Grep string under cursor' })
@@ -95,12 +98,12 @@ vim.keymap.set('n', '<leader>gl', builtin.live_grep, { desc = 'Grep' })
 vim.keymap.set('n', '<leader>fm', man_pages, { desc = 'Find Man' })
 vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Find file' })
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Find buffer' })
+vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
 
--- man pages highlight links and i do not want this
-cmd("highlight! link manItalic none");
--- highlight todo
-vim.api.nvim_set_hl(0, '@text.note', { link = 'Todo' })
+-- presistent undo
+opt.undofile = true
 
+-- lua is enough
 g.loaded_node_provider = 0
 g.loaded_perl_provider = 0
 g.loaded_ruby_provider = 0
