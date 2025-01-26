@@ -63,6 +63,20 @@ lspconfig.hls.setup({
   capabilities = capabilities,
 })
 
+lspconfig.nixd.setup({
+  cmd = { "nixd" },
+  settings = {
+    nixd = {
+      nixpkgs = {
+        expr = "import <nixpkgs> { }",
+      },
+      formatting = {
+        command = { "nixfmt" },
+      },
+    },
+  },
+})
+
 lspconfig.lua_ls.setup({
   cmd = { "lua-language-server" },
   on_init = function(client)
