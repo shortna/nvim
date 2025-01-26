@@ -24,7 +24,7 @@ Plug("tpope/vim-fugitive")
 -- Undo tree
 Plug("mbbill/undotree")
 -- center
-Plug("smithbm2316/centerpad.nvim")
+Plug("jpalardy/vim-slime")
 
 vim.call("plug#end")
 
@@ -108,3 +108,11 @@ g.loaded_node_provider = 0
 g.loaded_perl_provider = 0
 g.loaded_ruby_provider = 0
 g.loaded_python3_provider = 0
+
+-- repl
+g.slime_target = "neovim"
+g.slime_haskell_ghci_add_let = 0
+g.slime_no_mappings = 1
+
+vim.keymap.set('x', '<leader>ps', "<Plug>SlimeRegionSend")
+vim.keymap.set('n', '<leader>pl', "<Plug>SlimeLineSend")
