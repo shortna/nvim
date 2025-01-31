@@ -23,7 +23,7 @@ Plug("nvim-telescope/telescope.nvim")
 Plug("tpope/vim-fugitive")
 -- Undo tree
 Plug("mbbill/undotree")
--- center
+-- repl
 Plug("jpalardy/vim-slime")
 
 vim.call("plug#end")
