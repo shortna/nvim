@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 TMUX_CONFIG=$(cat <<EOF
 set -g default-terminal "screen-256color"
@@ -50,36 +50,19 @@ alias cdb="cd .."
 alias vim="nvim"
 alias battery='echo (cat /sys/class/power_supply/BAT1/capacity)%'
 set -Ux EDITOR nvim
-EOF)
-
-function install_progs() {
-PROGS=(
-    "git"
-    "curl"
-    "wget"
-    "ninja-build"
-    "gettext" 
-    "cmake" 
-    "build-essential"
-    "python3-pip"
-    "fish"
-    "ripgrep"
-    "fzf"
-    "tmux"
-    "kitty"
+EOF
 )
 
-sudo apt update
-for prog in "${PROGS[@]}"; do
-    echo "Installing $prog..."
-    sudo apt install -y "$prog"
-done
+function install_progs() {
+PROGS= "git curl wget ninja-build gettext cmake build-essential python3-pip fish ripgrep fzf tmux kitty"
+sudo apt update && sudo apt install -y "$PROGS"
 }
 
 function install_nvim() {
-	NVIM_REPO="https://github.com/neovim/neovim/tree/v0.11.2"
+	NVIM_REPO="https://github.com/neovim/neovim.git"
 	git clone "$NVIM_REPO"
 	cd "$NVIM_REPO"
+    git checkout "v0.11.2"
 	make CMAKE_BUILD_TYPE=Release
 	sudo make install
 	cd ..
@@ -90,20 +73,19 @@ function install_nvim() {
 	# install config
 	NVIM_CONFIG="nvim_config"
 	git clone "https://github.com/shortna/nvim" "$NVIM_CONFIG"
-	mkdir -p "~/.config"
-	cp -r "$NVIM_CONFIG" "~/.config/nvim"
+	cp -r "$NVIM_CONFIG" "$HOME/.config/nvim"
 	# install plugins and exit
 	nvim -c "PlugInstall | qall!" +q
 }
 
-install_progs()
-install_nvim()
+install_progs
+install_nvim
 
-echo "$TMUX_CONFIG" > .tmux.conf
-mkdir -p ~/.config/fish
-echo "$FISH_CONFIG" >  ~/.config/fish/config.fish
-mkdir -p ~/.config/kitty
+echo "$TMUX_CONFIG" > ".tmux.conf"
+mkdir -p "$HOME/.config/fish"
+echo "$FISH_CONFIG" > "$HOME/.config/fish/config.fish"
+mkdir -p "$HOME/.config/kitty"
 echo "confirm_os_window_close 0
 enable_audio_bell no
 mouse_hide_wait 2
-copy_on_select no" >  ~/.config/kitty/kitty.conf
+copy_on_select no" > "$HOME/.config/kitty/kitty.conf"
