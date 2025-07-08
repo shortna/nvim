@@ -30,8 +30,11 @@ vim.keymap.set('n', '<leader>ut', vim.cmd.UndotreeToggle)
 vim.keymap.set('n', '<leader>xxd', ':%!xxd -u<CR>')
 vim.keymap.set('n', '<leader>uxxd', ':%!xxd -r<CR>')
 
-vim.keymap.set('n', '<leader>dp', '[c')
-vim.keymap.set('n', '<leader>dn', ']c')
+vim.keymap.set('n', '<leader>mu', ':m-2<CR>')
+vim.keymap.set('n', '<leader>md', ':m+1<CR>')
+
+vim.keymap.set('v', '<leader>mu', [[:m'<-2<CR>gv=gv]])
+vim.keymap.set('v', '<leader>md', [[:m'>+1<CR>gv=gv]])
 
 -- basic stuff
 opt.syntax = "enable"
@@ -66,10 +69,10 @@ opt.wildmode = 'full'
 
 -- remove numbers in terminal
 vim.api.nvim_create_autocmd('TermOpen', {
-	callback = function()
-		opt.relativenumber = false
-		opt.number = false
-	end
+    callback = function()
+        opt.relativenumber = false
+        opt.number = false
+    end
 })
 -- vim doesnt like compound literals
 g.c_no_curly_error = true
