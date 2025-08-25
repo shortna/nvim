@@ -4,6 +4,8 @@ local opt = vim.opt
 local Plug = vim.fn['plug#']
 
 vim.call('plug#begin')
+Plug('tjdevries/colorbuddy.nvim')
+Plug("jesseleite/nvim-noirbuddy")
 Plug("Saghen/blink.cmp")
 Plug("nvim-lua/plenary.nvim")
 Plug("RRethy/base16-nvim")
@@ -35,6 +37,9 @@ vim.keymap.set('n', '<leader>md', ':m+1<CR>')
 
 vim.keymap.set('v', '<leader>mu', [[:m'<-2<CR>gv=gv]])
 vim.keymap.set('v', '<leader>md', [[:m'>+1<CR>gv=gv]])
+
+vim.keymap.set('n', '<leader>dv', [["_dd]])
+vim.keymap.set('n', '<leader>yp', [["+yy]])
 
 -- basic stuff
 opt.syntax = "enable"
@@ -86,4 +91,4 @@ g.loaded_perl_provider = 0
 g.loaded_ruby_provider = 0
 g.loaded_python3_provider = 0
 
-vim.cmd("colorscheme base16-solarized-light")
+vim.cmd("colorscheme noirbuddy")
