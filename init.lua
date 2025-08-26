@@ -85,6 +85,9 @@ g.c_no_curly_error = true
 -- presistent undo
 opt.undofile = true
 
+-- if file changed outside of vim reread it
+opt.autoread = true
+
 -- lua is enough
 g.loaded_node_provider = 0
 g.loaded_perl_provider = 0
