@@ -13,6 +13,7 @@ Plug("nvim-telescope/telescope.nvim")
 Plug("mbbill/undotree")
 Plug("jpalardy/vim-slime")
 Plug("nvim-treesitter/nvim-treesitter")
+Plug("tpope/vim-fugitive")
 vim.call('plug#end')
 
 local telescope_builtin = require("telescope.builtin");

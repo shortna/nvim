@@ -168,4 +168,19 @@ vim.lsp.config('rust_analyzer', {
     }
 })
 
-vim.lsp.enable({ 'clangd', 'hls', 'lua_ls', 'rust_analyzer' })
+vim.lsp.config('basedpyright', {
+    cmd = { "basedpyright-langserver", "--stdio" },
+    filetypes = { "python" },
+    root_markers = { "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt", "Pipfile", "pyrightconfig.json", ".git" },
+    settings = {
+        basedpyright = {
+            analysis = {
+                autoSearchPaths = true,
+                diagnosticMode = "openFilesOnly",
+                useLibraryCodeForTypes = true
+            }
+        }
+    }
+})
+
+vim.lsp.enable({ 'basedpyright', 'clangd', 'hls', 'lua_ls', 'rust_analyzer' })
