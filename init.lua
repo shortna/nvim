@@ -30,9 +30,6 @@ vim.keymap.set('n', '<leader>tff', telescope_builtin.find_files, { desc = 'Find 
 vim.keymap.set('n', '<leader>tfb', telescope_builtin.buffers, { desc = 'Find buffer' })
 vim.keymap.set('n', '<leader>ut', vim.cmd.UndotreeToggle)
 
-vim.keymap.set('n', '<leader>xxd', ':%!xxd -u<CR>')
-vim.keymap.set('n', '<leader>uxxd', ':%!xxd -r<CR>')
-
 vim.keymap.set('n', '<leader>mu', ':m-2<CR>')
 vim.keymap.set('n', '<leader>md', ':m+1<CR>')
 
