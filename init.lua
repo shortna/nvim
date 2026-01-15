@@ -13,6 +13,7 @@ Plug("nvim-telescope/telescope.nvim")
 Plug("mbbill/undotree")
 Plug("jpalardy/vim-slime")
 Plug("nvim-treesitter/nvim-treesitter")
+Plug('nyoom-engineering/oxocarbon.nvim')
 Plug("tpope/vim-fugitive")
 vim.call('plug#end')
 
@@ -69,6 +70,8 @@ opt.softtabstop = 4
 -- menu stuff
 opt.wildmenu = true
 opt.wildmode = 'full'
+opt.spell = true
+opt.spelllang = "en_us"
 
 -- remove numbers in terminal
 vim.api.nvim_create_autocmd('TermOpen', {
@@ -77,14 +80,15 @@ vim.api.nvim_create_autocmd('TermOpen', {
         opt.number = false
     end
 })
--- vim doesnt like compound literals
+-- vim doesn't like compound literals
 g.c_no_curly_error = true
 
--- presistent undo
+-- persistent undo
 opt.undofile = true
 
 -- if file changed outside of vim reread it
 opt.autoread = true
+opt.fixendofline = false
 
 -- lua is enough
 g.loaded_node_provider = 0
@@ -92,4 +96,8 @@ g.loaded_perl_provider = 0
 g.loaded_ruby_provider = 0
 g.loaded_python3_provider = 0
 
-vim.cmd("colorscheme noirbuddy")
+-- netrw
+g.netrw_winsize = 30
+g.netrw_banner = 0
+
+vim.cmd("colorscheme base16-everforest-dark-hard")

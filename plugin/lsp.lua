@@ -183,4 +183,10 @@ vim.lsp.config('basedpyright', {
     }
 })
 
-vim.lsp.enable({ 'basedpyright', 'clangd', 'hls', 'lua_ls', 'rust_analyzer' })
+vim.lsp.config('zls', {
+    cmd = { "zls"},
+    filetypes = { "zig" },
+    root_markers = { "build.big", "zls.json",  ".git" },
+})
+
+vim.lsp.enable({ 'basedpyright', 'clangd', 'hls', 'lua_ls', 'rust_analyzer', 'zls' })
