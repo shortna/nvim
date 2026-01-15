@@ -19,10 +19,10 @@ vim.call('plug#end')
 
 local telescope_builtin = require("telescope.builtin");
 g.mapleader = " "
-vim.keymap.set('n', '<Leader>ve', '<Cmd>Ex<CR>', { silent = true })
+vim.keymap.set('n', '<Leader>ve', '<Cmd>Vex<CR>', { silent = true })
 vim.keymap.set('n', '<Tab>', '<Cmd>bnext<CR>', { silent = true })
 vim.keymap.set('n', '<S-Tab>', '<Cmd>bprevious<CR>', { silent = true })
-vim.keymap.set('n', '<Leader>vbl', '<Cmd>ls<CR>', { silent = true })
+vim.keymap.set('n', '<Leader>bl', '<Cmd>ls<CR>', { silent = true })
 vim.keymap.set('t', '<S-Tab>', '<C-\\><C-n>', { nowait = true })
 
 vim.keymap.set('n', '<leader>tgs', telescope_builtin.grep_string, { desc = 'Grep string under cursor' })
@@ -30,12 +30,6 @@ vim.keymap.set('n', '<leader>tgl', telescope_builtin.live_grep, { desc = 'Grep' 
 vim.keymap.set('n', '<leader>tff', telescope_builtin.find_files, { desc = 'Find file' })
 vim.keymap.set('n', '<leader>tfb', telescope_builtin.buffers, { desc = 'Find buffer' })
 vim.keymap.set('n', '<leader>ut', vim.cmd.UndotreeToggle)
-
-vim.keymap.set('n', '<leader>mu', ':m-2<CR>')
-vim.keymap.set('n', '<leader>md', ':m+1<CR>')
-
-vim.keymap.set('v', '<leader>mu', [[:m'<-2<CR>gv=gv]])
-vim.keymap.set('v', '<leader>md', [[:m'>+1<CR>gv=gv]])
 
 vim.keymap.set('n', '<leader>dv', [["_dd]])
 vim.keymap.set('n', '<leader>yp', [["+yy]])
