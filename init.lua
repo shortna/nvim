@@ -4,8 +4,6 @@ local opt = vim.opt
 local Plug = vim.fn['plug#']
 
 vim.call('plug#begin')
-Plug('tjdevries/colorbuddy.nvim')
-Plug("jesseleite/nvim-noirbuddy")
 Plug("Saghen/blink.cmp")
 Plug("nvim-lua/plenary.nvim")
 Plug("RRethy/base16-nvim")
@@ -13,8 +11,8 @@ Plug("nvim-telescope/telescope.nvim")
 Plug("mbbill/undotree")
 Plug("jpalardy/vim-slime")
 Plug("nvim-treesitter/nvim-treesitter")
-Plug('nyoom-engineering/oxocarbon.nvim')
 Plug("tpope/vim-fugitive")
+Plug("lewis6991/gitsigns.nvim")
 vim.call('plug#end')
 
 local telescope_builtin = require("telescope.builtin");
@@ -30,9 +28,6 @@ vim.keymap.set('n', '<leader>tgl', telescope_builtin.live_grep, { desc = 'Grep' 
 vim.keymap.set('n', '<leader>tff', telescope_builtin.find_files, { desc = 'Find file' })
 vim.keymap.set('n', '<leader>tfb', telescope_builtin.buffers, { desc = 'Find buffer' })
 vim.keymap.set('n', '<leader>ut', vim.cmd.UndotreeToggle)
-
-vim.keymap.set('n', '<leader>dv', [["_dd]])
-vim.keymap.set('n', '<leader>yp', [["+yy]])
 
 -- basic stuff
 opt.syntax = "enable"
